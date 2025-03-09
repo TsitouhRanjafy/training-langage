@@ -8,11 +8,13 @@ int main(void){
     double value,puissance;
 
     while(scanf("%lf %lf",&value,&puissance) != 2){
-        printf("Réssayer\n");
-    }
+        // Vider le buffer d'entrée
+        while (getchar() != '\n'); 
+    };
 
     printf(" %0.2f^%0.2f=",value,puissance);
     double x = pow(value,puissance);
+
     if (errno == 0)
         printf(" %0.3f",x);
     else
