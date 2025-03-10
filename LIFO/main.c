@@ -3,46 +3,46 @@
 #include<errno.h>
 
 
-struct personne {
-    int numero;
-    struct personne *next;
+struct Personne {
+    int number;
+    struct Personne *next;
 };
 
 int main(){
 
-    struct personne *head = NULL;
-    struct personne *last = NULL;
-    int n,cpt;
+    struct Personne *head = NULL;
+    struct Personne *last = NULL;
+    int inputNumber,count;
 
     // Emplier
-    cpt = 0;
-    n = 0;
-    while (n >= 0){
-        struct personne *nouveau = malloc(sizeof(struct personne));
-        if (nouveau == NULL){
+    count = 0;
+    inputNumber = 0;
+    while (inputNumber >= 0){
+        struct Personne *new = malloc(sizeof(struct Personne));
+        if (new == NULL){
             exit(EXIT_FAILURE);
         }
-        scanf("%d",&n);
-        nouveau->numero = n;
-        nouveau->next = NULL;
+        scanf("%d",&inputNumber);
+        new->number = inputNumber;
+        new->next = NULL;
 
-        if (cpt == 0){
-            head = nouveau;
+        if (count == 0){
+            head = new;
             last = head;
         } else {
-            last->next = nouveau; // = (*last).next = nouveau
-            last = nouveau;
+            last->next = new; // = (*last).next = new
+            last = new;
         }
-        ++cpt;
+        ++count;
     }
 
     printf("\n\n");
-    struct personne *current;
+    struct Personne *current;
     current = head;
-    printf("%d -> ",current->numero);
+    printf("%d -> ",current->number);
     do{
         current = current->next;
-        printf("%d -> ",current->numero);
+        printf("%d -> ",current->number);
     } while (current->next != NULL);
 
   
