@@ -8,11 +8,12 @@ int main(){
 
     struct Personne *head = NULL;
     struct Personne *last = NULL;
-    int inputNumber,count;
+    int inputNumber,position;
     char choise;
 
+    printf("e: Empiler, d: Depile, s: Enlever, i: Inserer");
     do{
-        printf("\n e: Empiler, d: Depile, s: Enlever [e/d/s]: "); scanf(" %c",&choise);
+        printf("\n\n [e/d/s/i]: "); scanf(" %c",&choise);
 
         switch (choise){
             case 'e': 
@@ -27,8 +28,13 @@ int main(){
                 printf("\t entrer le numero> "); scanf(" %d",&inputNumber);
                 enlever(&head,inputNumber);
                 break;
+            case 'i':
+                printf("\t entrer le numero> "); scanf("%d",&inputNumber);
+                printf("\t inserer après? : "); scanf(" %d",&position);
+                inserer(&head,position,inputNumber);
+                break;
             default:
-                printf("mauvaise\n");
+                printf("mauvaise");
                 break;
         }
         afficher(&head);

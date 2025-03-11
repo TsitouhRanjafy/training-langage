@@ -68,6 +68,28 @@ int enlever(struct Personne **head,int number){
         temp = current;
         current = current->next;
     }
+    printf("numero non trouvé\n");
+    return EXIT_SUCCESS;
+}
+
+int inserer(struct Personne **head,int position,int number){
+    if ((*head) == NULL) return EXIT_SUCCESS;
+
+    struct Personne *new  = malloc(sizeof(struct Personne));
+    new->number = number;
+    new->next = NULL;
+
+    struct Personne *current = (*head);
+    struct Personne *temp = NULL;
+    while(current != NULL){
+        if (current->number == position){
+            new->next = current->next;
+            current->next = new;
+            return EXIT_SUCCESS;
+        }
+        current = current->next;
+    }
+    printf("position non trouvé\n");
     return EXIT_SUCCESS;
 }
 
@@ -75,7 +97,7 @@ void afficher(struct Personne **head){
     struct Personne *current;
     current = (*head);
     if (current == NULL) return;
-    printf("%d - > ",current->number);
+    printf("\n%d - > ",current->number);
 
     if (current->next == NULL) return;
     do{
