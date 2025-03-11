@@ -6,7 +6,7 @@ struct Personne {
     struct Personne *next;
 };
 void empiler(struct Personne **head,struct Personne **last,int number);
-void depiler(struct Personne **head);
+void depiler(struct Personne **head,struct Personne **last);
 void afficher(struct Personne **head);
 
 #endif

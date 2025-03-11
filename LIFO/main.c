@@ -21,7 +21,7 @@ int main(){
                 empiler(&head,&last,inputNumber);
                 break;
             case 'd':
-                depiler(&head);
+                depiler(&head,&last);
                 break;
             default:
                 printf("mauvaise\n");

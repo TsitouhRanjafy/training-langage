@@ -21,24 +21,28 @@ void empiler(struct Personne **head,struct Personne **last,int number){
     }
 }
 
-int  depiler(struct Personne **head){
+int  depiler(struct Personne **head,struct Personne **last){
     if ((*head) == NULL) return EXIT_SUCCESS;
     if ((*head)->next == NULL) {
         (*head) = NULL;
+	(*last) = NULL;
+	printf("null head\n");
         return EXIT_SUCCESS;
     }
     struct Personne *temp = (*head)->next;
-    struct Personne *last = (*head);
+    struct Personne *templast = (*head);
     if (temp->next == NULL) {
-        last->next = NULL;
+        templast->next = NULL;
+	(*last) = templast;
         return EXIT_SUCCESS;
     }
    
     do{
-        last = temp;
+        templast = temp;
         temp = temp->next;
     }while (temp->next != NULL);
-    last->next = NULL;
+    templast->next = NULL;
+    (*last) = templast;
     return EXIT_SUCCESS;
 }
 
