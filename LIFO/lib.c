@@ -46,6 +46,31 @@ int  depiler(struct Personne **head,struct Personne **last){
     return EXIT_SUCCESS;
 }
 
+int enlever(struct Personne **head,int number){
+    if ((*head) == NULL) return EXIT_SUCCESS;
+    if ((*head)->next == NULL) {
+        if ((*head)->number == number) (*head) = NULL;
+        return EXIT_SUCCESS;
+    }
+    if((*head)->number == number) {
+        (*head) = (*head)->next;
+        return EXIT_SUCCESS;
+    }
+
+    struct Personne *current = (*head)->next;
+    struct Personne *temp = (*head);
+
+    while(current != NULL){
+        if (current->number == number){
+            temp->next = current->next;
+            return EXIT_SUCCESS;
+        }
+        temp = current;
+        current = current->next;
+    }
+    return EXIT_SUCCESS;
+}
+
 void afficher(struct Personne **head){
     struct Personne *current;
     current = (*head);
