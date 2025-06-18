@@ -4,16 +4,17 @@
 #include "arrintm.h"
 
 
+
 int main(){
-    int array[] = {1,7,3,4,7}; 
+    int array[] = {1,7,3}; 
+    size_t len = (sizeof(array) / sizeof(int));
 
-    int *ptr_array = array;
+    arrprint(array,len);
+    arrpop(array,&len);
+    arrprint(array,len);
 
-    // printf(": %d",sizeof(array) / 4);
-    // for (size_t i = 0; i <= 7; ++i){
-    //     printf(": %d",array[i]);
-    //     printf(": %d :\n",*(&ptr_array[i]));
-    // }
+    arrpush(array,&len,8);
+    arrprint(array,len);
 
     return 0;
 }
