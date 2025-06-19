@@ -11,16 +11,39 @@
     DOCS
         Functions
 
-            arrprint(int *arr,size_t length);
-              print the array
+            arrprint:
+              void arrprint(int *arr, size_t length);
+                Print the array.
+            
+            
+            arrpop:
+              void arrpop(int *arr, size_t length);
+                 Removes the final element of the array.
+                
+                
+            arrpush: 
+              void arrpush(int *arr, size_t *length, int n);
+                Append the integer n to the end of array arr
+            
+            
+            arrinsert: 
+              void arrinsert(int *arr, size_t length, size_t i, int k);
+                Insert the integer n at index i of the array arr
 
+
+            arrremove:
+              int arrremove(int *arr, size_t *length, size_t index);
+              Remove the element at index and return it.
+              
 */
 
 #include<stdio.h>
 
 void arrprint(int *arr, size_t length);
 void arrpop(int *arr, size_t *length);
-void arrpush(int *arr, size_t *length, int n);
+void arrpush(int *arr, size_t *length, int k);
+void arrinsert(int *arr, size_t *length, size_t i, int k);
+int arrremove(int *arr, size_t *length, size_t index);
 
 // Implémentation; compilé uniquemennt si STAIM_IMPLEMENTATION est défini
 #ifdef ARRINTM_IMPLEMENTATION
@@ -38,15 +61,28 @@ void arrpop(int *arr, size_t *length){
     (*(&arr[n])) = 0;
 }
 
-void arrpush(int *arr, size_t *length, int n){
-    (*(&arr[(*(*(&length)))])) = n;
+void arrpush(int *arr, size_t *length, int k){
+    (*(&arr[*(*(&length))])) = k;
     (*(*(&length))) += 1;
 }
 
-void arrinsertAt(int *arr, size_t length, size_t index, int n){
-    /*
-        O(n/2)
-     */
+void arrinsert(int *arr, size_t *length, size_t i, int k){
+    // O(n)
+    for (size_t n = (*(*(&length))) - 1; n > i; --n){
+        *(&arr[n + 1]) = *(&arr[n]);
+    }
+    *(&arr[i + 1]) = *(&arr[i]);
+    *(&arr[i]) = k;
+    (*(*(&length))) += 1;
+}
+
+int arrremove(int *arr, size_t *length, size_t index){
+    int x = *(&arr[index]);
+    for (size_t n = index; n < *(*(&length)) - 1; ++n){
+        *(&arr[n]) = *(&arr[n + 1]);
+    }
+    (*(*(&length))) -= 1;
+    return x;
 }
 
 #endif
