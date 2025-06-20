@@ -34,19 +34,42 @@
             arrremove:
               int arrremove(int *arr, size_t *length, size_t index);
               Remove the element at index and return it.
+
+
+            arrqsort:
+              void arrqsort(void *arr, size_t length, size_t onesize,char order);
+                To sort the array in ascending('a' ord 1) order or descending(all char without 'a' or 1) order.
+                
               
 */
 
 #include<stdio.h>
+#include<stdlib.h>
 
 void arrprint(int *arr, size_t length);
 void arrpop(int *arr, size_t *length);
 void arrpush(int *arr, size_t *length, int k);
 void arrinsert(int *arr, size_t *length, size_t i, int k);
 int arrremove(int *arr, size_t *length, size_t index);
+void arrqsort(void *arr, size_t length, size_t onesize,char order);
+
 
 // Implémentation; compilé uniquemennt si STAIM_IMPLEMENTATION est défini
 #ifdef ARRINTM_IMPLEMENTATION
+
+
+/************************ FUNCTION HELPERS *****************************/
+
+int compPos(const void *a, const void *b){
+    return (*(int *)a - *(int *)b);
+}
+
+int compNeg(const void *a, const void *b){
+    return (*(int *)b - *(int *)a);
+}
+
+/***********************************************************************/
+
 
 void arrprint(int *arr, size_t length){
     printf("[");
@@ -83,6 +106,11 @@ int arrremove(int *arr, size_t *length, size_t index){
     }
     (*(*(&length))) -= 1;
     return x;
+}
+
+void arrqsort(void *arr, size_t length, size_t onesize, char order){
+    if (order == 'a' || order == 1) qsort(*(&arr),length,onesize,compPos);
+    else qsort(*(&arr),length,onesize,compNeg);
 }
 
 #endif

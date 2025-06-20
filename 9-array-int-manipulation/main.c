@@ -1,9 +1,8 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 #define ARRINTM_IMPLEMENTATION
 #include "arrintm.h"
-
-
 
 int main(){
     int array[100] = {7,-4,12};
@@ -23,24 +22,14 @@ int main(){
     arrprint(array,len);
     printf("len: %d\n\n",len);
 
-    arrremove(array,&len,3);
+    arrqsort(array,len,sizeof(array[0]),1);
     arrprint(array,len);
     printf("len: %d\n\n",len);
 
-    arrremove(array,&len,0);
+    arrqsort(array,len,sizeof(array[0]),0);
     arrprint(array,len);
     printf("len: %d\n\n",len);
+    
 
-    arrremove(array,&len,3);
-    arrprint(array,len);
-    printf("len: %d\n\n",len);
-
-    arrpop(array,&len);
-    arrprint(array,len);
-    printf("len: %d\n\n",len);
-
-    arrremove(array,&len,1);
-    arrprint(array,len);
-    printf("len: %d\n\n",len);
     return 0;
 }
