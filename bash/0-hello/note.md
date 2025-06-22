@@ -1,0 +1,1 @@
+# [doc](https://doc.ubuntu-fr.org/tutoriel/script_shell#pour_faire_qu_un_script_soit_executable)
