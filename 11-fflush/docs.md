@@ -1,0 +1,1 @@
+[fflush](https://koor.fr/C/cstdio/fflush.wp)
