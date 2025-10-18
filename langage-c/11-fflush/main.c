@@ -20,12 +20,12 @@ int main(){
   
   
   while (index < count) {
-      // insert a name and phone number
     char name[30];
     char phoneNum[30];
     printf("  enter name:"); scanf("%s",name);
     printf("  enter phone number:"); scanf("%s",phoneNum);
     
+    // print name and phone number in stream
     fprintf(stream, "| %-30s | %-30s \n", name, phoneNum);
     
     // display the file between each insertion.
