@@ -11,7 +11,7 @@ public class Main {
         }
         try {
             Ville v = new Ville("Antananarivo", -34567, "Madagascar");
-
+            System.out.println(v.getNom());
         } catch (NombreHabitantException e) {
             System.out.println(e.getMessage());
         }
@@ -45,5 +45,25 @@ class Ville {
             this.pays = pays;
             this.nbreHabitants = nbre;
         }
+    }
+
+    public String getNom() {
+        return this.nom;
+    }
+
+    public String getPays() {
+        return this.pays;
+    }
+
+    public int getNbreHabitant() {
+        return this.nbreHabitants;
+    }
+
+    public static int getNbreInstances() {
+        return nbreInstances;
+    }
+
+    public static int getNbreInstancesBis() {
+        return nbreInstancesBis;
     }
 }
