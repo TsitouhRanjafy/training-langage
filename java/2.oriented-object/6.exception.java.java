@@ -9,12 +9,18 @@ public class Main {
         } finally {
             System.out.println("action faite systématiquement");
         }
+
+
         try {
-            Ville v = new Ville("Antananarivo", -34567, "Madagascar");
+            Ville v = new Ville("Antananarivo", 34567, "Madagascar");
             System.out.println(v.getNom());
         } catch (NombreHabitantException e) {
             System.out.println(e.getMessage());
+        } catch (NomVilleException e) {
+            throw new RuntimeException(e.getMessage());
         }
+
+
 
     }
 }
@@ -22,6 +28,12 @@ public class Main {
 class NombreHabitantException extends Exception {
     public NombreHabitantException(int nbre) {
         super("Vous essayez d'instancier une classe Ville avec un nombre d'habitants négatif !: "+nbre);
+    }
+}
+
+class NomVilleException extends Exception {
+    public NomVilleException(String message){
+        super(message);
     }
 }
 
@@ -37,9 +49,11 @@ class Ville {
         pays = "Inconnu";
         nbreHabitants = 0;
     }
-    public Ville(String nom, int nbre, String pays) throws NombreHabitantException {
+    public Ville(String nom, int nbre, String pays) throws NombreHabitantException, NomVilleException {
         if (nbre < 0)
             throw new NombreHabitantException(nbre);
+        if (nom.length() < 3 )
+            throw new NomVilleException("le nom de la ville est inférieur à 3 caractères ! nom = "+nom);
         else {
             this.nom = nom;
             this.pays = pays;
